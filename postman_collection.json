@@ -1,0 +1,1082 @@
+{
+	"info": {
+		"_postman_id": "e7039421-621a-41af-b6ff-2a6c4d55e72d",
+		"name": "SamsungLocal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "partnerId=PTNR1&scheme=1",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "redhat",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "redhat",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9080/api/incentivepayout/partner?partnerId=PTNR1&scheme=1",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9080",
+					"path": [
+						"api",
+						"incentivepayout",
+						"partner"
+					],
+					"query": [
+						{
+							"key": "partnerId",
+							"value": "PTNR1"
+						},
+						{
+							"key": "scheme",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partnerId=PTNR2&scheme=1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9080/api/incentivepayout/partner?partnerId=PTNR2&scheme=1",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9080",
+					"path": [
+						"api",
+						"incentivepayout",
+						"partner"
+					],
+					"query": [
+						{
+							"key": "partnerId",
+							"value": "PTNR2"
+						},
+						{
+							"key": "scheme",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partnerId=PTNR3&scheme=1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9080/api/incentivepayout/partner?partnerId=PTNR3&scheme=1",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9080",
+					"path": [
+						"api",
+						"incentivepayout",
+						"partner"
+					],
+					"query": [
+						{
+							"key": "partnerId",
+							"value": "PTNR3"
+						},
+						{
+							"key": "scheme",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partnerId=PTNR4&scheme=1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9080/api/incentivepayout/partner?partnerId=PTNR4&scheme=1",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9080",
+					"path": [
+						"api",
+						"incentivepayout",
+						"partner"
+					],
+					"query": [
+						{
+							"key": "partnerId",
+							"value": "PTNR4"
+						},
+						{
+							"key": "scheme",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partnerId=PTNR5&scheme=1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9080/api/incentivepayout/partner?partnerId=PTNR5&scheme=1",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9080",
+					"path": [
+						"api",
+						"incentivepayout",
+						"partner"
+					],
+					"query": [
+						{
+							"key": "partnerId",
+							"value": "PTNR5"
+						},
+						{
+							"key": "scheme",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partnerId=PTNR6&scheme=1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9080/api/incentivepayout/partner?partnerId=PTNR6&scheme=1",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9080",
+					"path": [
+						"api",
+						"incentivepayout",
+						"partner"
+					],
+					"query": [
+						{
+							"key": "partnerId",
+							"value": "PTNR6"
+						},
+						{
+							"key": "scheme",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partnerId=PTNR7&scheme=1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9080/api/incentivepayout/partner?partnerId=PTNR7&scheme=1",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9080",
+					"path": [
+						"api",
+						"incentivepayout",
+						"partner"
+					],
+					"query": [
+						{
+							"key": "partnerId",
+							"value": "PTNR7"
+						},
+						{
+							"key": "scheme",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partnerId=PTNR8&scheme=1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9080/api/incentivepayout/partner?partnerId=PTNR8&scheme=1",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9080",
+					"path": [
+						"api",
+						"incentivepayout",
+						"partner"
+					],
+					"query": [
+						{
+							"key": "partnerId",
+							"value": "PTNR8"
+						},
+						{
+							"key": "scheme",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partnerId=PTNR9&scheme=1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9080/api/incentivepayout/partner?partnerId=PTNR9&scheme=1",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9080",
+					"path": [
+						"api",
+						"incentivepayout",
+						"partner"
+					],
+					"query": [
+						{
+							"key": "partnerId",
+							"value": "PTNR9"
+						},
+						{
+							"key": "scheme",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partnerId=PTNR10&scheme=1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9080/api/incentivepayout/partner?partnerId=PTNR10&scheme=1",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9080",
+					"path": [
+						"api",
+						"incentivepayout",
+						"partner"
+					],
+					"query": [
+						{
+							"key": "partnerId",
+							"value": "PTNR10"
+						},
+						{
+							"key": "scheme",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partnerId=PTNR11&scheme=1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9080/api/incentivepayout/partner?partnerId=PTNR11&scheme=1",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9080",
+					"path": [
+						"api",
+						"incentivepayout",
+						"partner"
+					],
+					"query": [
+						{
+							"key": "partnerId",
+							"value": "PTNR11"
+						},
+						{
+							"key": "scheme",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partnerId=PTNR1&scheme=1a",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9080/api/incentivepayout/partner?partnerId=PTNR1&scheme=1a",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9080",
+					"path": [
+						"api",
+						"incentivepayout",
+						"partner"
+					],
+					"query": [
+						{
+							"key": "partnerId",
+							"value": "PTNR1"
+						},
+						{
+							"key": "scheme",
+							"value": "1a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partnerId=PTNR2&scheme=1a",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9080/api/incentivepayout/partner?partnerId=PTNR2&scheme=1a",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9080",
+					"path": [
+						"api",
+						"incentivepayout",
+						"partner"
+					],
+					"query": [
+						{
+							"key": "partnerId",
+							"value": "PTNR2"
+						},
+						{
+							"key": "scheme",
+							"value": "1a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partnerId=PTNR3&scheme=1a",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9080/api/incentivepayout/partner?partnerId=PTNR3&scheme=1a",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9080",
+					"path": [
+						"api",
+						"incentivepayout",
+						"partner"
+					],
+					"query": [
+						{
+							"key": "partnerId",
+							"value": "PTNR3"
+						},
+						{
+							"key": "scheme",
+							"value": "1a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partnerId=PTNR4&scheme=1a",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9080/api/incentivepayout/partner?partnerId=PTNR4&scheme=1a",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9080",
+					"path": [
+						"api",
+						"incentivepayout",
+						"partner"
+					],
+					"query": [
+						{
+							"key": "partnerId",
+							"value": "PTNR4"
+						},
+						{
+							"key": "scheme",
+							"value": "1a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partnerId=PTNR5&scheme=1a",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9080/api/incentivepayout/partner?partnerId=PTNR5&scheme=1a",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9080",
+					"path": [
+						"api",
+						"incentivepayout",
+						"partner"
+					],
+					"query": [
+						{
+							"key": "partnerId",
+							"value": "PTNR5"
+						},
+						{
+							"key": "scheme",
+							"value": "1a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partnerId=PTNR6&scheme=1a",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9080/api/incentivepayout/partner?partnerId=PTNR6&scheme=1a",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9080",
+					"path": [
+						"api",
+						"incentivepayout",
+						"partner"
+					],
+					"query": [
+						{
+							"key": "partnerId",
+							"value": "PTNR6"
+						},
+						{
+							"key": "scheme",
+							"value": "1a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partnerId=PTNR7&scheme=1a",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9080/api/incentivepayout/partner?partnerId=PTNR7&scheme=1a",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9080",
+					"path": [
+						"api",
+						"incentivepayout",
+						"partner"
+					],
+					"query": [
+						{
+							"key": "partnerId",
+							"value": "PTNR7"
+						},
+						{
+							"key": "scheme",
+							"value": "1a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partnerId=PTNR8&scheme=1a",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9080/api/incentivepayout/partner?partnerId=PTNR8&scheme=1a",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9080",
+					"path": [
+						"api",
+						"incentivepayout",
+						"partner"
+					],
+					"query": [
+						{
+							"key": "partnerId",
+							"value": "PTNR8"
+						},
+						{
+							"key": "scheme",
+							"value": "1a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partnerId=PTNR9&scheme=1a",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9080/api/incentivepayout/partner?partnerId=PTNR9&scheme=1a",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9080",
+					"path": [
+						"api",
+						"incentivepayout",
+						"partner"
+					],
+					"query": [
+						{
+							"key": "partnerId",
+							"value": "PTNR9"
+						},
+						{
+							"key": "scheme",
+							"value": "1a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partnerId=PTNR10&scheme=1a",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9080/api/incentivepayout/partner?partnerId=PTNR10&scheme=1a",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9080",
+					"path": [
+						"api",
+						"incentivepayout",
+						"partner"
+					],
+					"query": [
+						{
+							"key": "partnerId",
+							"value": "PTNR10"
+						},
+						{
+							"key": "scheme",
+							"value": "1a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partnerId=PTNR11&scheme=1a",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9080/api/incentivepayout/partner?partnerId=PTNR11&scheme=1a",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9080",
+					"path": [
+						"api",
+						"incentivepayout",
+						"partner"
+					],
+					"query": [
+						{
+							"key": "partnerId",
+							"value": "PTNR11"
+						},
+						{
+							"key": "scheme",
+							"value": "1a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Scheme1Configuration",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "redhat",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "redhat",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"lookup\": \"incsession\",\n    \"commands\": [\n        {\n            \"insert\": {\n                \"return-object\": true,\n                \"object\": {\n                    \"com.samsung.incentive.Request\": {\n                        \"schemeName\": \"Scheme1\"\n                    }\n                }\n            }\n        },\n        {\n            \"get-objects\": {\n                \"out-identifier\": \"returnedObject\"\n            }\n        },\n        {\n            \"fire-all-rules\": \"\"\n        },\n        {\n            \"dispose\": {}\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/kie-server/services/rest/server/containers/instances/incentive",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"kie-server",
+						"services",
+						"rest",
+						"server",
+						"containers",
+						"instances",
+						"incentive"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Scheme1perUnit",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "redhat",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "redhat",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"lookup\": \"incsession\",\n    \"commands\": [\n        {\n            \"insert\": {\n                \"return-object\": true,\n                \"object\": {\n                    \"com.samsung.incentive.Request\": {\n                        \"schemeName\": \"Scheme1\",\n                        \"incentiveNature\": \"PER_UNIT\",\n                        \"quantity\": 0\n                    }\n                }\n            }\n        },\n        {\n            \"get-objects\": {\n                \"out-identifier\": \"returnedObject\"\n            }\n        },\n        {\n            \"fire-all-rules\": \"\"\n        },\n        {\n            \"dispose\": {}\n        }\n    ]\n}\n"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/kie-server/services/rest/server/containers/instances/incentive_1.0.0-SNAPSHOT",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"kie-server",
+						"services",
+						"rest",
+						"server",
+						"containers",
+						"instances",
+						"incentive_1.0.0-SNAPSHOT"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Scheme1aTargetandEligibility",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "redhat",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "redhat",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"lookup\": \"incsession\",\n\t\"commands\": [{\n\t\t\"insert\": {\n\t\t\t\"return-object\": true,\n\t\t\t\"object\": {\n\t\t\t\t\"com.samsung.incentive.Request\": {\n\t\t\t\t\t\"schemeName\": \"Scheme1a\",\n\t\t\t\t\t\"incentiveNature\": \"SLAB\",\n\t\t\t\t\t\"saleValuePreviousMonth\": 181000.0,\n\t\t\t\t\t\"saleValueAchived\": 332000.0\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}, {\n\t\t\"get-objects\": {\n\t\t\t\"out-identifier\": \"returnedObject\"\n\t\t}\n\t}, {\n\t\t\"fire-all-rules\": \"\"\n\t}, {\n\t\t\"dispose\": {}\n\t}]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/kie-server/services/rest/server/containers/instances/incentive_1.0.0-SNAPSHOT",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"kie-server",
+						"services",
+						"rest",
+						"server",
+						"containers",
+						"instances",
+						"incentive_1.0.0-SNAPSHOT"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SlabBasedPayout",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "redhat",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "redhat",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"lookup\": \"incsession\",\n\n\t\"commands\": [{\n\t\t\t\"insert\": {\n\t\t\t\t\"return-object\": true,\n\t\t\t\t\"object\": {\n\t\t\t\t\t\"com.samsung.incentive.Request\": {\n\t\t\t\t\t\t\"schemeName\": \"Scheme1a\",\n\t\t\t\t\t\t\"saleValueAchievedExcMinPP\": 332000.0\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}, {\n\t\t\t\"get-objects\": {\n\t\t\t\t\"out-identifier\": \"returnedObject\"\n\t\t\t}\n\t\t}, {\n\t\t\t\"fire-all-rules\": \"\"\n\n\t\t},\n\t\t{\n\t\t\t\"dispose\": {}\n\t\t}\n\n\t]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/kie-server/services/rest/server/containers/instances/incentive_1.0.0-SNAPSHOT",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"kie-server",
+						"services",
+						"rest",
+						"server",
+						"containers",
+						"instances",
+						"incentive_1.0.0-SNAPSHOT"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Scheme1aConfiguration",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "redhat",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "redhat",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"lookup\": \"incsession\",\n    \"commands\": [\n        {\n            \"insert\": {\n                \"return-object\": true,\n                \"object\": {\n                    \"com.samsung.incentive.Request\": {\n                        \"schemeName\": \"Scheme1a\"\n                    }\n                }\n            }\n        },\n        {\n            \"get-objects\": {\n                \"out-identifier\": \"returnedObject\"\n            }\n        },\n        {\n            \"fire-all-rules\": \"\"\n        },\n        {\n            \"dispose\": {}\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/kie-server/services/rest/server/containers/instances/incentive",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"kie-server",
+						"services",
+						"rest",
+						"server",
+						"containers",
+						"instances",
+						"incentive"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
