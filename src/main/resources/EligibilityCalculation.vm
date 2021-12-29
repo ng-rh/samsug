@@ -1,0 +1,24 @@
+{
+	"lookup": "${headers.lookup}",
+	"commands": [{
+		"insert": {
+			"return-object": true,
+			"object": {
+				"${headers.classObject}": {
+					"schemeName": "${headers.scheme}",
+					"incentiveNature": "${headers.incentiveNature}",
+					"saleValuePreviousMonth": ${headers.saleValuePreviousMonth},
+					"saleValueAcheived": ${headers.saleValueAcheived}
+				}
+			}
+		}
+	}, {
+		"get-objects": {
+			"out-identifier": "returnedObject"
+		}
+	}, {
+		"fire-all-rules": ""
+	}, {
+		"dispose": {}
+	}]
+}

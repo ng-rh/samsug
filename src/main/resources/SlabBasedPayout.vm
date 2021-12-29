@@ -1,0 +1,27 @@
+{
+	"lookup": "${headers.lookup}",
+
+	"commands": [{
+			"insert": {
+				"return-object": true,
+				"object": {
+					"${headers.classObject}": {
+						"schemeName": "${headers.scheme}",
+						"saleValueAchievedExcMinPP": ${headers.ValueExcMinPP}
+					}
+				}
+			}
+		}, {
+			"get-objects": {
+				"out-identifier": "returnedObject"
+			}
+		}, {
+			"fire-all-rules": ""
+
+		},
+		{
+			"dispose": {}
+		}
+
+	]
+}

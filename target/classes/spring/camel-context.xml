@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+  <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>  
+        <property name="url" value="jdbc:mysql://172.30.53.8:3306/Samsung_DB"/>
+        <property name="username" value="root"/>
+        <property name="password" value="redhat"/>
+  </bean>
+
+  <bean id="validate" class="org.samsung.Validate" /> 
+  <bean id="sales" class="org.samsung.Sale" /> 
+
+  <!-- You could also define a traditional camel context here 'my-secret-pw' -->
+  <camelContext id="ctx_IncentivePayout" xmlns="http://camel.apache.org/schema/spring">
+
+    <dataFormats>
+      <json id="jsonn" library="Jackson" />
+    </dataFormats>
+
+    <restConfiguration
+     component="jetty"
+     host="{{host}}" 
+     port="{{port}}" 
+     contextPath="/api">
+    </restConfiguration>
+
+    <rest id="SamSung">
+      <get uri="/incentivepayout/partner">
+        <route id="route-SchemeConfig" streamCache="true">
+          <log id="log1" message="Request Body Recievied from user ${body} :: ${headers}"/>
+          <doTry>
+            <setBody>
+              <simple>{{Partner}}</simple>
+            </setBody>
+            <transform>
+              <simple>${body.replace('PTNRCODE','${header.partnerId}')}</simple>
+            </transform>
+            <log  message="Request Sent to DB Query for Partner ${body}"/>
+            <to  uri="jdbc:dataSource"/>
+            <log  message="Response Recived From DB Query for Partner ${body}"/>
+            <bean ref="validate" method="partnerverify" />
+
+            <choice>
+              <when>
+                <simple>${header.validPtnr} == 'YES' </simple>
+                <setHeader headerName="scheme">
+                  <simple>Scheme${header.scheme}</simple>
+                </setHeader>
+                <setHeader headerName="classObject">
+                  <simple>{{classObject}}</simple>
+                </setHeader>
+                <setHeader headerName="lookup">
+                  <simple>{{lookup}}</simple>
+                </setHeader>
+                <to id="_to1" uri="velocity:SchemeConfig.vm"/>
+                <setHeader headerName="Accept">
+                  <simple>application/json</simple>
+                </setHeader>
+                <setHeader headerName="Content-Type">
+                  <simple>application/json</simple>
+                </setHeader>
+                <setHeader headerName="Authorization">
+                  <simple>{{Authorization}}</simple>
+                </setHeader>
+                <setHeader headerName="Exchange.HTTP_METHOD">
+                  <simple>POST</simple>
+                </setHeader>
+                <removeHeader headerName="CamelHttpQuery"></removeHeader>
+                <log id="log2" message="Request Sent to SchemeConfiguration ${body} : ${headers}"/>
+                <to id="_to2" uri="{{Url}}"/>
+                <log id="log3" message="Response Received from SchemeConfiguration ${body}"/>
+                <setBody>
+                  <jsonpath>$.result["execution-results"].results[1].value[0]["com.samsung.incentive.Request"]</jsonpath>
+                </setBody>
+                <log id="log4" message="SamsungSchemes ${body}"/>
+                <setHeader headerName="schemeEndDate">
+                  <simple>${body[schemeEndDate]}</simple>
+                </setHeader>
+                <setHeader headerName="schemeStartDate">
+                  <simple>${body[schemeStartDate]}</simple>
+                </setHeader>
+                <setHeader headerName="incentiveNature">
+                  <simple>${body[incentiveNature]}</simple>
+                </setHeader>
+                <setHeader headerName="PRODUCTTYPE">
+                  <simple>${body[productType]}</simple>
+                </setHeader>
+                <setHeader headerName="perunitbody">
+                  <simple>${body}</simple>
+                </setHeader>
+                <choice>
+                  <when>
+                    <simple>${header.schemeStartDate} == null </simple>
+                    <log message="schemeStartDate is null"/>
+                    <setBody>
+                      <simple>{ "schemeName" : "${header.scheme}", "message":"scheme Does Not Exist"}</simple>
+                    </setBody>
+                    <setHeader headerName="Exchange.HTTP_RESPONSE_CODE">
+                      <simple>400</simple>
+                    </setHeader>
+                  </when>
+                  <otherwise>
+                    <log message="schemeStartDate is not null"/>
+                    <to id="_to3" uri="direct:DBQuery" />
+                    <setHeader headerName="CamelHttpMethod">
+                      <simple>POST</simple>
+                    </setHeader>
+                    <choice>
+                      <when>
+                        <simple>${header.incentiveNature} == 'PER_UNIT' </simple>
+                        <choice>
+                          <when>
+                            <simple>${header.quantity} == 0 </simple>
+                            <setBody>
+                              <simple>${header.perunitbody}</simple>
+                            </setBody>
+                            <setBody>
+                              <simple>{ "schemeName" : "${body[schemeName]}", "partnerId": "${header.partnerId}", "schemeStartDate": "${body[schemeStartDate]}", "schemeEndDate": "${body[schemeEndDate]}", "productType": "${body[productType]}", "incentiveNature": "${body[incentiveNature]}", "quantity": ${header.quantity}, "perUnitPayout": ${body[perUnitPayout]},"totalIncentivePayout": ${body[totalIncentivePayout]}}</simple>
+                            </setBody>
+                          </when>
+                          <otherwise>
+                            <to id="_to4" uri="direct:Scheme1"/>
+                          </otherwise>
+                        </choice>
+                      </when>
+                      <when>
+                        <simple>${header.incentiveNature} == 'SLAB' </simple>
+                        <to id="_to5" uri="direct:Scheme1a"/>
+                      </when>
+                    </choice>
+                  </otherwise>
+                </choice>
+              </when>
+              <otherwise>
+                <log message="partnerId is not available"/>
+                <setBody>
+                  <simple>{  "partnerId" : "${header.partnerId}", "message":"partnerId Does Not Exist"}</simple>
+                </setBody>
+                <setHeader headerName="Exchange.HTTP_RESPONSE_CODE">
+                  <simple>400</simple>
+                </setHeader>
+                <setHeader headerName="Accept">
+                  <simple>application/json</simple>
+                </setHeader>
+                <setHeader headerName="Content-Type">
+                  <simple>application/json</simple>
+                </setHeader>
+              </otherwise>
+            </choice>
+            <doCatch>
+              <exception>java.lang.Exception</exception>
+              <log message="Exception Occured ${exception}"/>
+              <setBody>
+                <simple>{ "schemeName" : "${header.scheme}", "partnerId" : "${header.partnerId}", "message":"Exception Occured"}</simple>
+              </setBody>
+              <setHeader headerName="Exchange.HTTP_RESPONSE_CODE">
+                <simple>400</simple>
+              </setHeader>
+              <setHeader headerName="Accept">
+                <simple>application/json</simple>
+              </setHeader>
+              <setHeader headerName="Content-Type">
+                <simple>application/json</simple>
+              </setHeader>
+            </doCatch>
+          </doTry>
+          <log id="log5" message="Response Sent to User ${body}"/>
+        </route>
+      </get>
+    </rest>
+
+    <route id="route2"  streamCache="true">
+      <from id="DBQuery" uri="direct:DBQuery"/>
+      <log id="log6" message="DB Query ${body} : ${headers}"/>
+        <bean ref="validate" method="DBDate" />
+        <setBody>
+          <simple>${header.PRODUCTTYPE}</simple>
+        </setBody>
+        <bean ref="validate" method="productType" />
+        <choice>
+          <when>
+            <simple>${header.incentiveNature} == 'PER_UNIT' </simple>
+            <setBody>
+              <simple>{{countQuery}}</simple>
+            </setBody>
+            <transform>
+              <simple>${body.replace('PTNRCODE','${header.partnerId}')}</simple>
+            </transform>
+            <transform>
+              <simple>${body.replace('PRODTYPE','${header.PRODUCTTYPE}')}</simple>
+            </transform>
+            <transform>
+              <simple>${body.replace('STARTDATE','${header.StartDate}')}</simple>
+            </transform>
+            <transform>
+              <simple>${body.replace('ENDDATE','${header.EndDate}')}</simple>
+            </transform>
+            <log id="log7" message="Request Sent to DB Query for quantity ${body}"/>
+            <to id="to7" uri="jdbc:dataSource"/>
+            <log id="log8" message="Response Recived From DB Query for quantity ${body}"/>
+            <setHeader headerName="DBOUT">
+              <simple>count</simple>
+            </setHeader>
+            <bean ref="sales" method="TotalSales" />
+            <log message="quantity : ${header.quantity}"/>
+          </when>
+          <when>
+            <simple>${header.incentiveNature} == 'SLAB' </simple>
+            <bean ref="validate" method="DBDate" />
+            <setBody>
+              <simple>{{PreviousValueQuery}}</simple>
+            </setBody>
+            <transform>
+              <simple>${body.replace('PTNRCODE','${header.partnerId}')}</simple>
+            </transform>
+            <transform>
+              <simple>${body.replace('PRODTYPE','${header.PRODUCTTYPE}')}</simple>
+            </transform>
+            <transform>
+              <simple>${body.replace('STARTDATE','${header.StartDate}')}</simple>
+            </transform>
+            <transform>
+              <simple>${body.replace('ENDDATE','${header.EndDate}')}</simple>
+            </transform>
+            <log id="log9" message="Request Sent to DB Query for saleValuePreviousMonth ${body}"/>
+            <to id="to7" uri="jdbc:dataSource"/>
+            <log id="log10" message="Response Recived From DB Quert for saleValuePreviousMonth ${body}"/>
+            <setHeader headerName="DBOUT">
+              <simple>PreviousValue</simple>
+            </setHeader>
+            <bean ref="sales" method="TotalSales" />
+            <setBody>
+              <simple>{{CurrentValueQuery}}</simple>
+            </setBody>
+            <transform>
+              <simple>${body.replace('PTNRCODE','${header.partnerId}')}</simple>
+            </transform>
+            <transform>
+              <simple>${body.replace('PRODTYPE','${header.PRODUCTTYPE}')}</simple>
+            </transform>
+            <transform>
+              <simple>${body.replace('STARTDATE','${header.StartDate}')}</simple>
+            </transform>
+            <transform>
+              <simple>${body.replace('ENDDATE','${header.EndDate}')}</simple>
+            </transform>
+            <log id="log11" message="Request Sent to DB Query for saleValueAchived ${body}"/>
+            <to id="to7" uri="jdbc:dataSource"/>
+            <log id="log12" message="Response Recived From DB Query for saleValueAchived ${body}"/>
+            <setHeader headerName="DBOUT">
+              <simple>CurrentValue</simple>
+            </setHeader>
+            <bean ref="sales" method="TotalSales" />
+          </when>
+        </choice>
+        <marshal ref="jsonn"/>
+      <log id="log13" message="Response Recived From Bean ${body}"/>
+    </route>
+
+
+    <route id="route3" streamCache="true">
+      <from id="Scheme1" uri="direct:Scheme1"/>
+      <log id="log14" message="Request Body Recievied from Incentive Payout"/>
+
+      <to id="_to8" uri="velocity:PerUnitPayout.vm"/>
+
+        <setHeader headerName="Accept">
+          <simple>application/json</simple>
+        </setHeader>
+        <setHeader headerName="Content-Type">
+          <simple>application/json</simple>
+        </setHeader>
+        <setHeader headerName="Authorization">
+          <simple>{{Authorization}}</simple>
+        </setHeader>
+        <setHeader headerName="Exchange.HTTP_METHOD">
+          <simple>POST</simple>
+        </setHeader>
+
+         <log id="log15" message="Request Sent to Scheme1perUnit ${body}"/>
+        <to id="_to9" uri="{{Url}}"/>
+        <log id="log16" message="Response Received from Scheme1perUnit ${body}"/>
+        
+        <setBody>
+          <jsonpath>$.result["execution-results"].results[1].value[0]["com.samsung.incentive.Request"]</jsonpath>
+        </setBody>
+        <setBody>
+		        <simple>{ "schemeName" : "${body[schemeName]}", "partnerId": "${header.partnerId}", "schemeStartDate": "${body[schemeStartDate]}", "schemeEndDate": "${body[schemeEndDate]}", "productType": "${body[productType]}", "incentiveNature": "${body[incentiveNature]}", "quantity": ${body[quantity]}, "perUnitPayout": ${body[perUnitPayout]},"totalIncentivePayout": ${body[totalIncentivePayout]}}</simple>
+        </setBody>
+        <log id="log17" message="Response Sent to Route1"/>
+      </route>
+      
+      
+<route id="route4" streamCache="true">
+      <from id="Scheme1a" uri="direct:Scheme1a"/>
+      <log id="log18" message="Request Body Recievied from Incentive Payout"/>
+
+      <to id="_to10" uri="velocity:EligibilityCalculation.vm"/>
+
+        <setHeader headerName="Accept">
+          <simple>application/json</simple>
+        </setHeader>
+        <setHeader headerName="Content-Type">
+          <simple>application/json</simple>
+        </setHeader>
+        <setHeader headerName="Authorization">
+          <simple>{{Authorization}}</simple>
+        </setHeader>
+        <setHeader headerName="CamelHttpMethod">
+          <simple>POST</simple>
+        </setHeader>
+
+         <log id="log19" message="Request Sent to Scheme1aTargetandEligibility ${body}"/>
+        <to id="_to11" uri="{{Url}}"/>
+        <log id="log20" message="Response Received from Scheme1aTargetandEligibility ${body}"/>
+        <doTry>
+          <setBody>
+            <jsonpath>$.result["execution-results"].results[1].value[0]["com.samsung.incentive.Request"]</jsonpath>
+          </setBody>
+          <doCatch>
+            <exception>java.lang.Exception</exception>
+            <log message="Exception Occured Set Scheme1aTargetandEligibility - results[0].value[0]"/>
+            <setBody>
+              <jsonpath>$.result["execution-results"].results[0].value[0]["com.samsung.incentive.Request"]</jsonpath>
+            </setBody>
+          </doCatch>
+        </doTry>
+        <!-- <setBody>
+		        <simple>{ "schemeName" : "${body[schemeName]}", "schemeStartDate": "${body[schemeStartDate]}", "schemeEndDate": "${body[schemeEndDate]}", "productType": "${body[productType]}", "incentiveNature": "${body[incentiveNature]}", "quantity": ${body[quantity]}, "perUnitPayout": ${body[perUnitPayout]},"totalIncentivePayout": ${body[totalIncentivePayout]}}</simple>
+        </setBody> -->
+        <setHeader headerName="realTarget">
+          <simple>${body[realTarget]}</simple>
+        </setHeader>
+        <setHeader headerName="isEligibleForPayout">
+          <simple>${body[isEligibleForPayout]}</simple>
+        </setHeader>
+        <setHeader headerName="minProductPriceforExclusion">
+          <simple>${body[minProductPriceforExclusion]}</simple>
+        </setHeader>
+        <setHeader headerName="prodType">
+          <simple>${body[productType]}</simple>
+        </setHeader>
+        <setHeader headerName="payoutPercent">
+          <simple>${body[payoutPercent]}</simple>
+        </setHeader>
+        <setHeader headerName="slabBasedPayout">
+          <simple>${body[slabBasedPayout]}</simple>
+        </setHeader>
+        <bean ref="validate" method="SConvert" />
+        <!-- <log id="log21" message="Response ${body} | Headers : ${headers}"/> -->
+        <setBody>
+		        <simple>{{MinPriceQuery}}</simple>
+        </setBody>
+        <transform>
+          <simple>${body.replace('MINPRICE','${header.minProductPriceforExclusion}')}</simple>
+        </transform>
+        <transform>
+          <simple>${body.replace('PRODTYPE','${header.PRODUCTTYPE}')}</simple>
+        </transform>
+        <log id="log22" message="Request Sent to DB Query for minProductPriceforExclusion ${body}"/>
+        <to id="to12" uri="jdbc:dataSource"/>
+        <log id="log23" message="Response Recived From DB Query for minProductPriceforExclusion ${body}"/>
+        <bean ref="validate" method="minProduct" />
+        <!-- <bean ref="validate" method="DBDate" /> -->
+        <setBody>
+          <simple>{{SalesvalueExcMinpp}}</simple>
+        </setBody>
+        <transform>
+          <simple>${body.replace('PTNRCODE','${header.partnerId}')}</simple>
+        </transform>
+        <transform>
+          <simple>${body.replace('MAXPTYPE','${header.minProduct}')}</simple>
+        </transform>
+         <transform>
+          <simple>${body.replace('STARTDATE','${header.StartDate}')}</simple>
+        </transform>
+        <transform>
+          <simple>${body.replace('ENDDATE','${header.EndDate}')}</simple>
+        </transform>
+        <log id="log24" message="Request Sent to DB Query for saleValueAchivedExcMinPP ${body}"/>
+        <to id="to13" uri="jdbc:dataSource"/>
+        <log id="log25" message="Response Recived From DB Query for saleValueAchivedExcMinPP ${body}"/>
+        <bean ref="sales" method="ValueExcMinPP" />
+        <choice>
+            <when>
+              <simple>${header.isEligibleForPayout} == '0' </simple>
+              <setBody>
+                  <simple>{ "schemeName" : "${header.scheme}", "partnerId": "${header.partnerId}", "schemeStartDate": "${header.schemeStartDate}", "schemeEndDate": "${header.schemeEndDate}", "productType": "${header.productType}", "incentiveNature": "${header.incentiveNature}","isEligible" : ${header.isEligibleForPayout},"saleValueAchievedExcMinDP" : ${header.ValueExcMinPP}, "payoutPercent": ${header.payoutPercent}, "slabBasedPayout": ${header.slabBasedPayout}}</simple>
+              </setBody>
+            </when>
+            <when>
+              <simple>${header.isEligibleForPayout} == '1' </simple>          
+              <setHeader headerName="CamelHttpMethod">
+                <simple>POST</simple>
+              </setHeader>
+              <to id="_to10" uri="velocity:SlabBasedPayout.vm"/>
+              <log id="log26" message="Request Sent to SlabBasedPayout ${body}"/>
+              <to id="_to14" uri="{{Url}}"/>
+              <log id="log27" message="Response Received from SlabBasedPayout ${body}"/>
+              <!-- <setBody>
+                <jsonpath>$.result["execution-results"].results[0].value[0]["com.samsung.incentive.Request"]</jsonpath>
+              </setBody> -->
+              <doTry>
+                <setBody>
+                      <jsonpath>$.result["execution-results"].results[0].value[0]["com.samsung.incentive.Request"]</jsonpath>
+                </setBody>
+                <doCatch>
+                  <exception>java.lang.Exception</exception>
+                  <log message="Exception Occured Set SlabBasedPayout - results[1].value[0]"/>
+                  <setBody>
+                      <jsonpath>$.result["execution-results"].results[1].value[0]["com.samsung.incentive.Request"]</jsonpath>
+                  </setBody>
+                </doCatch>
+              </doTry>
+              <setBody>
+                  <simple>{ "schemeName" : "${body[schemeName]}", "partnerId": "${header.partnerId}", "schemeStartDate": "${body[schemeStartDate]}", "schemeEndDate": "${body[schemeEndDate]}", "productType": "${body[productType]}", "incentiveNature": "${body[incentiveNature]}","isEligible" : ${header.isEligibleForPayout},"saleValueAchievedExcMinDP" : ${body[saleValueAchievedExcMinPP]}, "payoutPercent": ${body[payoutPercent]}, "slabBasedPayout": ${body[slabBasedPayout]}}</simple>
+              </setBody>
+          </when>
+        </choice>
+        <!-- <marshal ref="jsonn"/> -->
+        <log id="log28" message="Response Sent to Route1 "/>
+      </route>
+    
+  </camelContext>
+
+</beans>
