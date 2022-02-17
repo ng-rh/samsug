@@ -8,9 +8,9 @@
 
   <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>  
-        <property name="url" value="jdbc:mysql://172.30.71.197:3306/Samsung_DB"/>
+        <property name="url" value="jdbc:mysql://172.30.250.128:3306/Samsung_DB"/>
         <property name="username" value="root"/>
-        <property name="password" value="incentivepayout"/>
+        <property name="password" value="redhat"/>
   </bean>
 
   <bean id="validate" class="org.samsung.Validate" /> 
