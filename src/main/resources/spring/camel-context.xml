@@ -5,23 +5,25 @@
        xsi:schemaLocation="
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
-<!--
-  <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+
+  <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" >
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>  
         <property name="url" value="jdbc:mysql://172.30.152.231:3306/Samsung_DB"/>
         <property name="username" value="root"/>
         <property name="password" value="redhat"/>
   </bean>
--->
+<!--
   <bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="mysqlDataSource" scope="singleton">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://10.131.4.139:3306/Samsung_DB"/>
         <property name="username" value="root"/>
         <property name="password" value="redhat"/>
     </bean>
+
     <bean class="org.apache.camel.component.sql.SqlComponent" id="sql" scope="singleton">
-        <property name="dataSource" ref="mysqlDataSource"/>
+        <property name="dataSource" ref="dataSource"/>
     </bean>
+-->
 
   <bean id="validate" class="org.samsung.Validate" /> 
   <bean id="sales" class="org.samsung.Sale" /> 
