@@ -15,7 +15,7 @@
 -->
   <bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="mysqlDataSource" scope="singleton">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://172.30.152.231:3306/Samsung_DB"/>
+        <property name="url" value="jdbc:mysql://10.131.4.139:3306/Samsung_DB"/>
         <property name="username" value="root"/>
         <property name="password" value="redhat"/>
     </bean>
