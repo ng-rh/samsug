@@ -26,7 +26,7 @@
 </properties>
 
   <dependencyManagement>
-    <dependencies>   
+    <dependencies>
       <!-- Spring Boot BOM -->
       <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -45,8 +45,7 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
- 
-  
+
   <dependencies>
     <!-- Spring Boot -->
     <dependency>
@@ -82,40 +81,41 @@
       <artifactId>json</artifactId>
       <version>20190722</version>
     </dependency>
-    <dependency>
+     <dependency>
       <groupId>commons-dbcp</groupId>
       <artifactId>commons-dbcp</artifactId>
       <version>1.4</version>
-    </dependency>
-    <dependency> 
+  </dependency>
+       <dependency> 
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-sql</artifactId>
       <version>2.25.3</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-jdbc</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-jetty</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>8.0.24</version>
-    </dependency>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-jdbc</artifactId>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-jetty</artifactId>
+      </dependency>
+        <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.24</version>
+      </dependency>
+ 
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-http</artifactId>
       <version>2.25.3</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>4.5</version>
     </dependency>
-    <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpclient</artifactId>
-      <version>4.5</version>
-    </dependency>
-    <dependency>
+  <dependency>
 	 <groupId>org.apache.camel</groupId>
 	 <artifactId>camel-velocity</artifactId>
 	 <version>2.25.3</version>
@@ -124,13 +124,13 @@
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-jackson</artifactId>
       <version>2.25.3</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-jsonpath</artifactId>
-      <version>2.25.3</version>
-    </dependency>
-	  
+  </dependency>
+  <dependency>
+    <groupId>org.apache.camel</groupId>
+    <artifactId>camel-jsonpath</artifactId>
+    <version>2.25.3</version>
+</dependency>
+
     <!-- Test -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -142,41 +142,23 @@
       <artifactId>camel-test-spring</artifactId>
       <scope>test</scope>
     </dependency>
-	  
-    <!-- Addedd Ones -->
-	  
+    
     <!-- API, java.xml.bind module -->
-    <dependency>
-      <groupId>jakarta.xml.bind</groupId>
-      <artifactId>jakarta.xml.bind-api</artifactId>
-      <version>2.3.2</version>
-    </dependency>
-	  
-    <!-- Runtime, com.sun.xml.bind module -->
-    <dependency>
-      <groupId>org.glassfish.jaxb</groupId>
-      <artifactId>jaxb-runtime</artifactId>
-      <version>2.3.2</version>
-    </dependency>
-    dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-data-jpa</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <version>2.4.1</version> 
-      <scope>runtime</scope> 
-    </dependency>  
-    <!--  
-    <dependency>
-      <groupId>javax.activation</groupId>
-      <artifactId>activation</artifactId>
-      <version>1.1.1</version>
-    </dependency>
-    -->
+<dependency>
+    <groupId>jakarta.xml.bind</groupId>
+    <artifactId>jakarta.xml.bind-api</artifactId>
+    <version>2.3.2</version>
+</dependency>
+
+<!-- Runtime, com.sun.xml.bind module -->
+<dependency>
+    <groupId>org.glassfish.jaxb</groupId>
+    <artifactId>jaxb-runtime</artifactId>
+    <version>2.3.2</version>
+</dependency>
+
   </dependencies>
-	
+
   <build>
     <plugins>
       <plugin>
@@ -193,4 +175,5 @@
       </plugin>
     </plugins>
   </build>
+
 </project>
